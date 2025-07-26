@@ -21,19 +21,12 @@ int main()
 	printf("total = %d", total);
 	char inputs[total];
 
-	scanf("%*[^\n]");scanf("%*c");//clear upto newline
+	scanf("%*[^\n]");scanf("%*c");
 	int i;
 	for (i=0; i<height; i++)
 	{
-		printf("Enter a string: ");
-    	if(fgets(inputs,sizeof(inputs),stdin)){
-            char *p;
-            if(p=strchr(inputs, '\n')){//check exist newline
-                *p = 0;
-            } else {
-                scanf("%*[^\n]");scanf("%*c");//clear upto newline
-            }
-        }
+		printf("Row %d: ", i+1);
+    	fgets(inputs,sizeof(inputs),stdin);
     	printf("You entered: %s\n", inputs);
 		
 	}
