@@ -1,9 +1,16 @@
 //Danica Marie Suizo
 //Karl Andrei Ordinario
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
-extern int imgCvtInttoFloat();
+#define MAX_HEIGHT 1000
+#define MAX_WIDTH 1000
+
+int h[MAX_HEIGHT][MAX_WIDTH];
+float f[MAX_HEIGHT][MAX_WIDTH];
+
+extern void imgCvtInttoFloat(int height, int width, int* input, float* output);
 
 int main()
 { 
@@ -104,6 +111,14 @@ int main()
     }
 	
 	//DA FUNCTION
-	imgCvtInttoFloat();
+	imgCvtInttoFloat(height, width, &h[0][0], &f[0][0]);
+
+	printf("\nConverted Float Image:\n");
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			printf("%0.2f ", f[i][j]);
+		}
+		printf("\n");
+	}
 	return 0;
 }
