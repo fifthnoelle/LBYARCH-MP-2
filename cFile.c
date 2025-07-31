@@ -17,11 +17,27 @@ int main()
 	//asks user the height n weight 
 	//!!!ADD ERROR HANDLING HERE PENDING
 	int height, width, c;		
-	printf("\a");
-	printf("Input height: ");
-	scanf("%d", &height);
-	printf("Input width: ");
-	scanf("%d", &width);
+	do{
+		printf("Input height: ");
+		scanf("%d", &height);
+		
+		if(height < 1){
+			printf("Cannot be less than 1\n");
+		}else if (height > MAX_HEIGHT){
+			printf("Cannot be more than %d\n", MAX_HEIGHT);
+		}
+	}while(height < 1 || height > MAX_HEIGHT);
+	
+	do{
+		printf("Input width: ");
+		scanf("%d", &width);
+
+		if(width < 1){
+			printf("Cannot be less than 1\n");
+		}else if (width > MAX_WIDTH){
+			printf("Cannot be more than %d\n", MAX_WIDTH);
+		}
+	}while(width < 1 || width > MAX_WIDTH);
 
 	
 	int h[height][width];
