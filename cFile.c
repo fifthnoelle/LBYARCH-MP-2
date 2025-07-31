@@ -15,7 +15,6 @@ extern void imgCvtInttoFloat(int height, int width, int* input, float* output);
 int main()
 { 
 	//asks user the height n weight 
-	//!!!ADD ERROR HANDLING HERE PENDING
 	int height, width, c;		
 	do{
 		printf("Input height: ");
@@ -48,7 +47,7 @@ int main()
 	printf("\nPlease enter %d numbers per row (0-255), separated by commas\n", width);
     printf("Example: 10, 25, 150\n\n");
     
-    //ALL OF THIS WORKS, DO NOT CHANGE
+    //Parses inputs and error handling
 	int i, j;
 	for (i=0; i<height; i++)
 	{
@@ -57,13 +56,14 @@ int main()
     	inputs[strcspn(inputs, "\n")] = 0;
     	
 		//turn string into int
-		char *ptr = inputs;
-		int errorFound = 0;
+		char *ptr = inputs; //pointer to input string
+		int errorFound = 0; //error flag
 		
 		for(j=0; j<width; j++) {
 			int value;
 			int charsRead=0;
 			
+			//counts the chars read
 			if (sscanf(ptr, "%d%n", &value, &charsRead) != 1) {
                 printf("Error: Invalid format or not enough numbers. Please re-enter the row\n");
                 errorFound = 1;
@@ -77,15 +77,15 @@ int main()
             }
             
             h[i][j] = value;
-            ptr += charsRead;
+            ptr += charsRead;  //moves pointer past the chars read
             
-            while (*ptr == ' ' || *ptr == '\t') {
+            while (*ptr == ' ' || *ptr == '\t') {  //just to be sure if there are spaces in between
                 ptr++;
             }
             
             if (j < width - 1) {
                 if (*ptr == ',') {
-                    ptr++;
+                    ptr++;   //when comma, next number
                 } else {
                     
                     printf("Error: Missing a comma after the number %d. Please re-enter the row\n", value);
@@ -108,24 +108,8 @@ int main()
         if (errorFound) {
             i--;
         }
-    	//printf("You entered: %s\n", inputs);	
+    	
     }
-	
-	
-	//THIS ONE MAKIKITA MO KUNG PAANO SILA NAKA STORE
-	/*
-	h[0][0]  h[0][1]  h[0][2]
-	h[1][0]  h[1][1]  h[1][2]
-	h[2][0]  h[2][1]  h[2][2] etc.
-
-	printf("\nYAY!\n");
-    for (i = 0; i < height; i++) {
-        for (j = 0; j < width; j++) {
-            printf("%-5d", h[i][j]); 
-        }
-        printf("\n");
-    }
-	*/
 	
 	//DA FUNCTION
 	imgCvtInttoFloat(height, width, &h[0][0], &f[0][0]);
