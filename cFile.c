@@ -101,7 +101,7 @@ int main()
 	h[0][0]  h[0][1]  h[0][2]
 	h[1][0]  h[1][1]  h[1][2]
 	h[2][0]  h[2][1]  h[2][2] etc.
-	*/
+
 	printf("\nYAY!\n");
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++) {
@@ -109,6 +109,7 @@ int main()
         }
         printf("\n");
     }
+	*/
 	
 	//DA FUNCTION
 	imgCvtInttoFloat(height, width, &h[0][0], &f[0][0]);

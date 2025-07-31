@@ -2,7 +2,7 @@
 ;Karl Andrei Ordinario
 
 section .data
-    inv255  dd 0.0039215686, 0.0039215686, 0.0039215686, 0.0039215686
+    inv255  dd 0.0039215686, 0.0039215686, 0.0039215686, 0.0039215686 ;float converter kasi tamad ako
 
 section .text
 bits 64
@@ -12,16 +12,16 @@ global imgCvtInttoFloat
 imgCvtInttoFloat:
     push rbx
 
-
+    ; basically calculates the total amount of pixels by h*w
     mov eax, ecx        ; ecx = height
     imul eax, edx       ; edx = width
     mov r10d, eax       ; r10d = total pixels
     xor r11d, r11d      ; r11d = counter
 
-    ; Load 1/255.0 into xmm1
+    ; Load 1/255.0 into xmm1(pang convert sa float)
     movups xmm1, [rel inv255]
 
-.loop:
+.loop: ;loops till it reaches the total amount of pixels given lol
     cmp r11d, r10d
     jge .done
 
