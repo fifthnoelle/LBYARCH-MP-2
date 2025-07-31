@@ -133,8 +133,8 @@ int main()
 	float* flatF = &f[0][0];
 
 	printf("\nConverted Float Image:\n");
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
+	for (i = 0; i < height; i++) {
+		for (j = 0; j < width; j++) {
 			printf("%0.2f ", flatF[i * width + j]);
 		}
 		printf("\n");
